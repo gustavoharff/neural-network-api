@@ -1,18 +1,23 @@
 import express from "express";
 import fileUpload from "express-fileupload";
 import Jimp from "jimp";
+import cors from "cors";
 
-import { net } from "./net";
+import { net as colorsNet } from "./net";
 
 const app = express();
 
-app.use(fileUpload({
-  abortOnLimit: true,
-  limits: { 
-    files: 1,
-    fileSize: 1024 * 1024,
-  },
-}));
+app.use(cors());
+
+app.use(
+  fileUpload({
+    abortOnLimit: true,
+    limits: {
+      files: 1,
+      fileSize: 1024 * 1024,
+    },
+  })
+);
 
 app.post("/", async (request, response) => {
   try {
@@ -34,7 +39,7 @@ app.post("/", async (request, response) => {
       value.push(number);
     });
 
-    const result = net.run(value);
+    const result = colorsNet.run(value);
 
     return response.json(result);
   } catch (error) {
