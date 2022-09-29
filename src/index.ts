@@ -35,3 +35,7 @@ app.post('/image-recognition', async (request, response) => {
 app.listen(80, () => {
   console.log('Running at 80')
 })
+
+process.on('uncaughtException', function (err) {
+  console.log('Caught exception: ', err);
+});
