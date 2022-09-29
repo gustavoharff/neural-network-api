@@ -14,7 +14,7 @@ app.use(fileUpload({
   },
 }));
 
-app.post("/image-recognition", async (request, response) => {
+app.post("/", async (request, response) => {
   try {
     const files = request.files;
 
@@ -39,7 +39,7 @@ app.post("/image-recognition", async (request, response) => {
     return response.json(result);
   } catch (error) {
     console.log(error);
-    return response.status(400).json({ message: "Internal server error." });
+    return response.status(500).json({ message: "Internal server error." });
   }
 });
 
