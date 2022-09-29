@@ -32,6 +32,6 @@ app.post('/image-recognition', async (request, response) => {
   return response.json(result)
 })
 
-app.listen(8080, () => {
-  console.log('Running at 8080')
+app.listen(80, () => {
+  console.log('Running at 80')
 })
