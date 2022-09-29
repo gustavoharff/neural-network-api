@@ -6,7 +6,13 @@ import { net } from "./net";
 
 const app = express();
 
-app.use(fileUpload());
+app.use(fileUpload({
+  abortOnLimit: true,
+  limits: { 
+    files: 1,
+    fileSize: 1024 * 1024,
+  },
+}));
 
 app.post("/image-recognition", async (request, response) => {
   try {
