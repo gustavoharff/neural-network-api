@@ -24,6 +24,12 @@ export async function train(net: NeuralNetwork<INeuralNetworkData, INeuralNetwor
   const purple1 = await getColor("purple-1.png");
   const purple2 = await getColor("purple-2.png");
   const purple3 = await getColor("purple-3.png");
+  const black1 = await getColor("black-1.png");
+  const black2 = await getColor("black-2.png");
+  const black3 = await getColor("black-3.png");
+  const white1 = await getColor("white-1.png");
+  const white2 = await getColor("white-2.png");
+  const white3 = await getColor("white-3.png");
 
   net.train([
     { input: blue1, output: { blue: 1 } },
@@ -47,6 +53,12 @@ export async function train(net: NeuralNetwork<INeuralNetworkData, INeuralNetwor
     { input: purple1, output: { purple: 1 } },
     { input: purple2, output: { purple: 1 } },
     { input: purple3, output: { purple: 1 } },
+    { input: black1, output: { black: 1 } },
+    { input: black2, output: { black: 1 } },
+    { input: black3, output: { black: 1 } },
+    { input: white1, output: { white: 1 } },
+    { input: white2, output: { white: 1 } },
+    { input: white3, output: { white: 1 } },
   ], {
     callback: (status) => {
       console.log(status)
