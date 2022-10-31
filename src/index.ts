@@ -2,8 +2,10 @@ import express from "express";
 import fileUpload from "express-fileupload";
 import Jimp from "jimp";
 import cors from "cors";
+import { likely } from 'brain.js'
 
 import { net as colorsNet } from "./net";
+import { getColorArray } from "./net/get-color";
 
 const app = express();
 
@@ -33,13 +35,12 @@ app.post("/", async (request, response) => {
 
     const file = await Jimp.read(files.file.data);
 
-    const value: number[] = [];
+    // const value: number[] = [];
 
-    file.resize(10, 10).bitmap.data.forEach((number) => {
-      value.push(number);
-    });
+    const value = getColorArray(file)
 
-    const result = colorsNet.run(value);
+    // const result = colorsNet.run(value);
+    const result = likely(value, colorsNet);
 
     return response.json(result);
   } catch (error) {

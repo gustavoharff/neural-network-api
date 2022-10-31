@@ -2,8 +2,11 @@ import { NeuralNetwork } from 'brain.js'
 import { train } from './train'
 
 export const net = new NeuralNetwork({
-  iterations: 1000,
-  errorThresh: 0.0005
+  iterations: 5000,
+  hiddenLayers: [11],
+  errorThresh: 0.004,
+  learningRate: 0.1,
+  activation: 'sigmoid'
 })
 
 train(net)
