@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "tsnd ./src/index.ts",
+    "start": "tsnd --transpile-only ./src/index.ts",
     "build": "yarn run tsc && yarn copyfiles -u 1 src/**/*.png build"
   },
   "dependencies": {

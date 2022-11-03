@@ -1,67 +1,90 @@
-import type { NeuralNetwork } from 'brain.js'
+import type { NeuralNetwork } from "brain.js";
 import type { INeuralNetworkData } from "brain.js/dist/src/neural-network";
-import { getColor } from "./get-color";
+import { getImage, getImageArray } from "./get-image";
 
-export async function train(net: NeuralNetwork<INeuralNetworkData, INeuralNetworkData>) {
-  const red1 = await getColor("red-1.png");
-  const red2 = await getColor("red-2.png");
-  const red3 = await getColor("red-3.png");
-  const blue1 = await getColor("blue-1.png");
-  const blue2 = await getColor("blue-2.png");
-  const blue3 = await getColor("blue-3.png");
-  const green1 = await getColor("green-1.png");
-  const green2 = await getColor("green-2.png");
-  const green3 = await getColor("green-3.png");
-  const yellow1 = await getColor("yellow-1.png");
-  const yellow2 = await getColor("yellow-2.png");
-  const yellow3 = await getColor("yellow-3.png");
-  const pink1 = await getColor("pink-1.png");
-  const pink2 = await getColor("pink-2.png");
-  const pink3 = await getColor("pink-3.png");
-  const orange1 = await getColor("orange-1.png");
-  const orange2 = await getColor("orange-2.png");
-  const orange3 = await getColor("orange-3.png");
-  const purple1 = await getColor("purple-1.png");
-  const purple2 = await getColor("purple-2.png");
-  const purple3 = await getColor("purple-3.png");
-  const black1 = await getColor("black-1.png");
-  const black2 = await getColor("black-2.png");
-  const black3 = await getColor("black-3.png");
-  const white1 = await getColor("white-1.png");
-  const white2 = await getColor("white-2.png");
-  const white3 = await getColor("white-3.png");
+export async function train(
+  net: NeuralNetwork<INeuralNetworkData, INeuralNetworkData>
+) {
+  const a = await getImage("a");
+  const b = await getImage("b");
+  const c = await getImage("c");
+  const d = await getImage("d");
+  const e = await getImage("e");
+  const f = await getImage("f");
+  const g = await getImage("g");
+  const h = await getImage("h");
+  const i = await getImage("i");
+  const j = await getImage("j");
+  const k = await getImage("k");
+  const l = await getImage("l");
+  const m = await getImage("m");
+  const n = await getImage("n");
+  const o = await getImage("o");
+  const p = await getImage("p");
+  const q = await getImage("q");
+  const r = await getImage("r");
+  const s = await getImage("s");
+  const t = await getImage("t");
+  const u = await getImage("u");
+  const v = await getImage("v");
+  const w = await getImage("w");
+  const x = await getImage("x");
+  const y = await getImage("y");
+  const z = await getImage("z");
+  const _0 = await getImage("0");
+  const _1 = await getImage("1");
+  const _2 = await getImage("2");
+  const _3 = await getImage("3");
+  const _4 = await getImage("4");
+  const _5 = await getImage("5");
+  const _6 = await getImage("6");
+  const _7 = await getImage("7");
+  const _8 = await getImage("8");
+  const _9 = await getImage("9");
 
-  net.train([
-    { input: blue1, output: { blue: 1 } },
-    { input: blue2, output: { blue: 1 } },
-    { input: blue3, output: { blue: 1 } },
-    { input: red1, output: { red: 1 } },
-    { input: red2, output: { red: 1 } },
-    { input: red3, output: { red: 1 } },
-    { input: green1, output: { green: 1 } },
-    { input: green2, output: { green: 1 } },
-    { input: green3, output: { green: 1 } },
-    { input: yellow1, output: { yellow: 1 } },
-    { input: yellow2, output: { yellow: 1 } },
-    { input: yellow3, output: { yellow: 1 } },
-    { input: pink1, output: { pink: 1 } },
-    { input: pink2, output: { pink: 1 } },
-    { input: pink3, output: { pink: 1 } },
-    { input: orange1, output: { orange: 1 } },
-    { input: orange2, output: { orange: 1 } },
-    { input: orange3, output: { orange: 1 } },
-    { input: purple1, output: { purple: 1 } },
-    { input: purple2, output: { purple: 1 } },
-    { input: purple3, output: { purple: 1 } },
-    { input: black1, output: { black: 1 } },
-    { input: black2, output: { black: 1 } },
-    { input: black3, output: { black: 1 } },
-    { input: white1, output: { white: 1 } },
-    { input: white2, output: { white: 1 } },
-    { input: white3, output: { white: 1 } },
-  ], {
-    callback: (status) => {
-      console.log(status)
+  net.train(
+    [
+      { input: getImageArray(a), output: { a: 1 } },
+      { input: getImageArray(b), output: { b: 1 } },
+      { input: getImageArray(c), output: { c: 1 } },
+      { input: getImageArray(d), output: { d: 1 } },
+      { input: getImageArray(e), output: { e: 1 } },
+      { input: getImageArray(f), output: { f: 1 } },
+      { input: getImageArray(g), output: { g: 1 } },
+      { input: getImageArray(h), output: { h: 1 } },
+      { input: getImageArray(i), output: { i: 1 } },
+      { input: getImageArray(j), output: { j: 1 } },
+      { input: getImageArray(k), output: { k: 1 } },
+      { input: getImageArray(l), output: { l: 1 } },
+      { input: getImageArray(m), output: { m: 1 } },
+      { input: getImageArray(n), output: { n: 1 } },
+      { input: getImageArray(o), output: { o: 1 } },
+      { input: getImageArray(p), output: { p: 1 } },
+      { input: getImageArray(q), output: { q: 1 } },
+      { input: getImageArray(r), output: { r: 1 } },
+      { input: getImageArray(s), output: { s: 1 } },
+      { input: getImageArray(t), output: { t: 1 } },
+      { input: getImageArray(u), output: { u: 1 } },
+      { input: getImageArray(v), output: { v: 1 } },
+      { input: getImageArray(w), output: { w: 1 } },
+      { input: getImageArray(x), output: { x: 1 } },
+      { input: getImageArray(y), output: { y: 1 } },
+      { input: getImageArray(z), output: { z: 1 } },
+      { input: getImageArray(_0), output: { 0: 1 } },
+      { input: getImageArray(_1), output: { 1: 1 } },
+      { input: getImageArray(_2), output: { 2: 1 } },
+      { input: getImageArray(_3), output: { 3: 1 } },
+      { input: getImageArray(_4), output: { 4: 1 } },
+      { input: getImageArray(_5), output: { 5: 1 } },
+      { input: getImageArray(_6), output: { 6: 1 } },
+      { input: getImageArray(_7), output: { 7: 1 } },
+      { input: getImageArray(_8), output: { 8: 1 } },
+      { input: getImageArray(_9), output: { 9: 1 } },
+    ],
+    {
+      callback: (status) => {
+        console.log(status);
+      },
     }
-  });
+  );
 }

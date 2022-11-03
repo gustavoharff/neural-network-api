@@ -2,8 +2,11 @@ import express from "express";
 import fileUpload from "express-fileupload";
 import Jimp from "jimp";
 import cors from "cors";
+import { likely } from "brain.js";
 
 import { net as colorsNet } from "./net";
+import { getImageArray } from "./net/get-image";
+import { Image } from "./types";
 
 const app = express();
 
@@ -33,15 +36,34 @@ app.post("/", async (request, response) => {
 
     const file = await Jimp.read(files.file.data);
 
-    const value: number[] = [];
+    const INITIAL_X = 17.25;
+    const INITIAL_Y = 60.33;
+    const FILE_WIDTH = 70;
+    const FILE_HEIGHT = 90;
 
-    file.resize(10, 10).bitmap.data.forEach((number) => {
-      value.push(number);
-    });
+    const letters: Image[] = [];
 
-    const result = colorsNet.run(value);
+    for (let i = 0; i < 7; i++) {
+      const letter = file
+        .clone()
+        .crop(INITIAL_X + FILE_WIDTH * i, INITIAL_Y, FILE_WIDTH, FILE_HEIGHT);
 
-    return response.json(result);
+      letters.push(letter);
+    }
+
+    let body = "";
+
+    for (const letter of letters) {
+      const value = getImageArray(letter);
+
+      const result = likely(value, colorsNet);
+
+      if (result) {
+        body = `${body}${result}`;
+      }
+    }
+
+    return response.json(body);
   } catch (error) {
     console.log(error);
     return response.status(500).json({ message: "Internal server error." });
