@@ -44,23 +44,18 @@ app.post("/", async (request, response) => {
     const letters: Image[] = [];
 
     for (let i = 0; i < 7; i++) {
-      const letter =  file
-      .clone()
-      .crop(INITIAL_X + FILE_WIDTH * i, INITIAL_Y, FILE_WIDTH, FILE_HEIGHT)
+      const letter = file
+        .clone()
+        .crop(INITIAL_X + FILE_WIDTH * i, INITIAL_Y, FILE_WIDTH, FILE_HEIGHT);
 
-      letters.push(
-        letter
-      );
-
-      letter.write(`${i}.png`)
+      letters.push(letter);
     }
 
     let body = "";
 
     for (const letter of letters) {
-      const value = getColorArray(letter, true);
+      const value = getColorArray(letter);
 
-      // const result = colorsNet.run(value);
       const result = likely(value, colorsNet);
 
       if (result) {

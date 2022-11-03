@@ -14,15 +14,10 @@ export async function getColor(color: string) {
   return image;
 }
 
-export function getColorArray(image: Image, print = false) {
+export function getColorArray(image: Image) {
   const value: number[] = [];
 
   const resized = image.resize(14, 18)
-
-  if (print) {
-    resized.write(randomUUID() + '.png')
-  }
-
 
   resized.bitmap.data.forEach((number) => {
     value.push(number > 120 ? 1 : 0);
