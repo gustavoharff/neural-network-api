@@ -5,7 +5,7 @@ import cors from "cors";
 import { likely } from "brain.js";
 
 import { net as colorsNet } from "./net";
-import { getColorArray } from "./net/get-color";
+import { getImageArray } from "./net/get-image";
 import { Image } from "./types";
 
 const app = express();
@@ -54,7 +54,7 @@ app.post("/", async (request, response) => {
     let body = "";
 
     for (const letter of letters) {
-      const value = getColorArray(letter);
+      const value = getImageArray(letter);
 
       const result = likely(value, colorsNet);
 
